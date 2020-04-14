@@ -50,5 +50,4 @@ public class ReplyController {
 		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
 	}
 	
-
 }
