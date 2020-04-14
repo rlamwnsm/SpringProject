@@ -12,8 +12,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @RunWith(SpringRunner.class)
-//@ContextConfiguration({"file:src/main/webapp/WEB_INF/spring/root-context.xml"})
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml", "file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 public class MemberMapperTests {
 	@Setter(onMethod_=@Autowired)
 	private MemberMapper mapper;

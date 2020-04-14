@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.mapper.ReplyMapper">
+
+	<insert id="insert">
+		insert into board_reply(rno, bno, reply, replyer)
+		values (seq_board_reply.nextval, #{bno}, #{reply}, #{replyer})
+	</insert>
+	
+	<delete id="delete">
+		delete from board_reply where rno = #{rno}
+	</delete>
+	
+	<update id="update">
+		update board_reply set reply=#{reply}, updatedate=sysdate where rno=#{rno}	
+	</update>
+	
+	<select id="getReplyList"
+		resultType = "com.board.domain.ReplyVO">
+		select *
+		from board_reply
+		where bno=#{bno}
+		order by rno asc	
+		
+	</select>
+</mapper>

@@ -9,12 +9,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.board.domain.BoardVO;
 
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
+@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml", "file:src/main/webapp/WEB-INF/spring/security-context.xml"})
 
-//@AllArgsConstructor
+@AllArgsConstructor
 public class BoardServiceTests {
 	
 	@Setter(onMethod_= {@Autowired})
