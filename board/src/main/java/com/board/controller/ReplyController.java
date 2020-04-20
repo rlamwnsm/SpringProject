@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.board.domain.Criteria;
@@ -20,8 +21,8 @@ import com.board.service.ReplyService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+@RequestMapping("/replies/")
 @RestController
-@RequestMapping("/replies/*")
 @Log4j
 @AllArgsConstructor
 public class ReplyController {
@@ -49,4 +50,15 @@ public class ReplyController {
 		Criteria cri = new Criteria(page, 10);
 		return new ResponseEntity<>(service.getList(cri, bno), HttpStatus.OK);
 	}
+	
+	@RequestMapping(method= {RequestMethod.PUT, RequestMethod.PATCH}, value = "/{rno}", consumes = "application/json",
+							 produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> modify(@RequestBody ReplyVO vo, @PathVariable("rno") Long rno){
+		vo.setRno(rno);
+		
+		return service.modify(vo) == 1
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
 }
