@@ -116,7 +116,7 @@
 							</div>
 							<div class="form-group">
 								<label>Replyer</label>
-								<input class="form-control" name = 'replyer' readonly>
+								<input class="form-control" name = 'replyer' readonly="readonly">
 							</div>
 							<div class="form-group">
 								<label>ReplyData</label>
